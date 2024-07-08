@@ -1,7 +1,5 @@
 package com.restaurante.app.entity;
-
-import com.restaurante.app.entity.PedidoPlatoId;
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "PEDIDO_PLATO")

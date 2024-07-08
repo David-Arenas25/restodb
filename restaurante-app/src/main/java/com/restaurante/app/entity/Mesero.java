@@ -1,6 +1,6 @@
 package com.restaurante.app.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "MESEROS")

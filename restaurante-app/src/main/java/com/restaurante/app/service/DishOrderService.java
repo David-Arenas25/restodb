@@ -37,7 +37,6 @@ public class DishOrderService {
 
         pedidoPlatoRepository.pedirPlato(orderId,dishId,quantity);
 
-
     }
 
     public void delete(Long id) {
@@ -64,5 +63,11 @@ public class DishOrderService {
             throw new RuntimeException("Error al buscar la orden de bebida con ID: " + e.getMessage());
         }
     }
+
+
+    public long dishQuantity(long orderId){
+        return pedidoPlatoRepository.cantidadPlato(orderId);
+    }
+
 
 }

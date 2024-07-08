@@ -31,7 +31,7 @@ public class DrinkOrderRepository {
     }*/
 
     public void delete(Long id) {
-        drinkOrderRepository.deleteByIdIdPedido(id);
+        drinkOrderRepository.borrarPedidoBebida(id);
     }
 
     public DrinkOrder findById(Long id) {

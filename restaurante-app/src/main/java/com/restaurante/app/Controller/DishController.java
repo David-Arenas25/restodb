@@ -55,8 +55,7 @@ public class DishController {
     @GetMapping("id/{id}")
     public ResponseEntity<Optional<Dish>> findById(@PathVariable Long id) {
         try {
-            dishRepository.findById(id);
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(dishRepository.findById(id),HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

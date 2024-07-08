@@ -66,11 +66,17 @@ public class DrinkOrderService {
         } catch (Exception e) {
             throw new RuntimeException("Error al buscar la orden de bebida con ID: " + e.getMessage());
         }
+
+
+
     }
 
 
 
 
+    public long drinkQuantity(long orderId){
+        return pedidoBebidaRepository.cantidadBebida(orderId);
+    }
 
 
 

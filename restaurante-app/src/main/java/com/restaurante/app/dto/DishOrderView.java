@@ -1,8 +1,6 @@
 package com.restaurante.app.dto;
+import javax.persistence.*;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 @Entity
 public class DishOrderView {
 
@@ -15,6 +13,8 @@ public class DishOrderView {
     private Integer quantity;
     @Column(name ="nombre_mesero")
     private String waiterName;
+    @Column(name ="nombre_mesero")
+
 
     public Long getOrderId() {
         return orderId;

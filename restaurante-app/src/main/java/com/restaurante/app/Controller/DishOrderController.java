@@ -47,13 +47,13 @@ public class DishOrderController {
 
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity delete(@PathVariable Long id) {
+    @DeleteMapping("/delete")
+    public ResponseEntity delete(@RequestParam("id") Long id) {
         try {
             dishOrderRepository.delete(id);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -77,6 +77,19 @@ public class DishOrderController {
         }
     }
 
+
+    @PostMapping("/quantity")
+    public ResponseEntity<Long> getCantidadPlato(@RequestParam("id") long id) {
+        try {
+            Long cantidadPlato = dishOrderRepository.dishQuantity(id);
+            return new ResponseEntity<>(cantidadPlato, HttpStatus.OK);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); // 404 Not Found
+
+        }
+
+    }
 
 
 }

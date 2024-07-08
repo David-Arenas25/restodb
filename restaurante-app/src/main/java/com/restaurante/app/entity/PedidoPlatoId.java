@@ -1,7 +1,7 @@
 package com.restaurante.app.entity;
 
 import java.io.Serializable;
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 
 @Embeddable

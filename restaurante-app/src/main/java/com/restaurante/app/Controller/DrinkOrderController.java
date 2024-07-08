@@ -5,6 +5,7 @@ import com.restaurante.app.dto.DrinkOrderView;
 import com.restaurante.app.entity.PedidoBebida;
 import com.restaurante.app.mapper.DrinkOrderMapper;
 import com.restaurante.app.service.DrinkOrderService;
+import org.hibernate.annotations.NotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,18 +39,19 @@ public class DrinkOrderController {
             @RequestParam("quantity") long quantity) {
 
         try {
-            drinkOrderService.saveDrinkOrder(orderId,drinkId,quantity);
+            drinkOrderService.saveDrinkOrder(orderId, drinkId, quantity);
             return new ResponseEntity<>(HttpStatus.CREATED);
-        }catch (Exception e){
-            System.err.println("error"+e.getMessage());
+        } catch (Exception e) {
+            System.err.println("error" + e.getMessage());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
     }
 
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity delete(@PathVariable Long id) {
+    @DeleteMapping("/delete")
+    public ResponseEntity delete(@RequestParam("id") Long id) {
+
         try {
             drinkOrderService.delete(id);
             return new ResponseEntity<>(HttpStatus.OK);
@@ -71,11 +73,24 @@ public class DrinkOrderController {
     @GetMapping("/view")
     public ResponseEntity<List<DrinkOrderView>> viewDrinkOrders() {
         try {
-            List<DrinkOrderView> drinkOrderView= drinkOrderService.viewDrinkOrders();
+            List<DrinkOrderView> drinkOrderView = drinkOrderService.viewDrinkOrders();
             return new ResponseEntity<>(drinkOrderView, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
+
+    @PostMapping("/quantity")
+    public ResponseEntity<Long> getCantidadBebida(@RequestParam("id") long id) {
+        try {
+            Long cantidadBebida = drinkOrderService.drinkQuantity(id);
+            return new ResponseEntity<>(cantidadBebida, HttpStatus.OK);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); // 404 Not Found
+
+        }
+
+    }
 }

@@ -73,22 +73,22 @@ public class OrderController {
         }
     }
 
-    @GetMapping("/update/{id}")
-    public ResponseEntity<Order> updateTotal(@RequestParam("id") Long id){
+    @GetMapping("/update")
+    public ResponseEntity updateTotal(@RequestParam("id") Long id){
         try {
             pedidoRepository.actualizar(id);
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (Exception e){
             System.err.println("Error"+id+e.getMessage());
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @GetMapping("/pagar")
-    public ResponseEntity<Order> pagar(@RequestParam("total") float total,@RequestParam("orderId") Long orderId){
+    public ResponseEntity<Optional<Order>> pagar(@RequestParam("total") float total,@RequestParam("orderId") Long orderId){
         try {
             pedidoRepository.pagar(total,orderId);
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(orderRepository.findById(orderId),HttpStatus.OK);
         }catch (Exception e){
             System.err.println("Error"+orderId+e.getMessage());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

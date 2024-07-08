@@ -1,8 +1,5 @@
 package com.restaurante.app.dto;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import javax.persistence.*;
 @Entity
 public class DrinkOrderView {
 

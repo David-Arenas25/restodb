@@ -11,7 +11,7 @@ public interface PedidoRepository extends JpaRepository<Pedido,Long> {
     void total(@Param("Pid_pedido") Long idPedido);
 
     @Procedure("ACTUALIZAR_TOTAL_PEDIDO")
-    void actualizar(@Param("pID_PEDIDO") Long idPedido);
+    void actualizar(@Param("pID_PEDIDO") Long pID_PEDIDO);
 
     @Procedure("PAGAR")
     void pagar(@Param("pTOTAL") Float total, @Param("pID_PEDIDO")Long idPedido);

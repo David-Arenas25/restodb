@@ -1,7 +1,8 @@
 package com.restaurante.app.entity;
 
-import jakarta.persistence.*;
 
+
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
