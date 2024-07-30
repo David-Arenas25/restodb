@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  oracle-db:
+    image: gvenzl/oracle-free
+    container_name: my-oracle-db-container # Nombre del contenedor Oracle
+    environment:
+      - ORACLE_PASSWORD=COCO1325
+    ports:
+      - "1522:1521" # Mapea el puerto 1521 del contenedor al puerto 1522 del host
+    networks:
+      - my-network # Nombre de la red
+
+  spring-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: my-spring-app-container # Nombre del contenedor Spring Boot
+    ports:
+      - "8080:8080" # Mapea el puerto 8080 del contenedor al puerto 8080 del host
+    depends_on:
+      - oracle-db
+    networks:
+      - my-network # Nombre de la red
+
+networks:
+  my-network: # Nombre de la red
+    driver: bridge
