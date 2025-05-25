@@ -74,8 +74,8 @@ public class DrinkOrderService {
 
 
 
-    public long drinkQuantity(long orderId){
-        return pedidoBebidaRepository.cantidadBebida(orderId);
+    public long drinkQuantity(long orderId , long drinkId){
+        return pedidoBebidaRepository.cantidadBebida(orderId,drinkId);
     }
 
 

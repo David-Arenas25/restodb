@@ -11,8 +11,10 @@ import java.util.List;
 
 @Repository
 public interface PedidoBebidaViewRepository extends JpaRepository<DrinkOrderView,Long> {
+
     @Query(value = "SELECT * FROM pedido_bebidas", nativeQuery = true)
     List<DrinkOrderView> findAllPedidosBebida();
+
 
 
 

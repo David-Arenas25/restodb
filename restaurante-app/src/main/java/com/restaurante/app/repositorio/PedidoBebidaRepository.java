@@ -17,8 +17,8 @@ public interface PedidoBebidaRepository extends JpaRepository<PedidoBebida, Pedi
                      @Param("pID_BEBIDA") Long idBebida,
                      @Param("pCANTIDAD") Long cantidad);
 
-    @Query(value = "SELECT cantidad_bebida(:idPedido) AS total_bebidas FROM dual", nativeQuery = true)
-    Long cantidadBebida(@Param("idPedido") Long idPedido);
+    @Query(value = "SELECT dbo.cantidad_bebida(:p_id_pedido, :p_id_bebida)", nativeQuery = true)
+    Long cantidadBebida(@Param("p_id_pedido") Long idPedido, @Param("p_id_bebida") Long idBebida);
     PedidoBebida findByIdIdPedido(long orderId);
 }
 

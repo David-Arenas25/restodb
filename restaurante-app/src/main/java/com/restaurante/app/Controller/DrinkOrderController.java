@@ -82,9 +82,9 @@ public class DrinkOrderController {
 
 
     @PostMapping("/quantity")
-    public ResponseEntity<Long> getCantidadBebida(@RequestParam("id") long id) {
+    public ResponseEntity<Long> getCantidadBebida(@RequestParam("p_id_pedido") long idPedido, @RequestParam("p_id_bebida") long idBebida) {
         try {
-            Long cantidadBebida = drinkOrderService.drinkQuantity(id);
+            Long cantidadBebida = drinkOrderService.drinkQuantity(idPedido,idBebida);
             return new ResponseEntity<>(cantidadBebida, HttpStatus.OK);
         } catch (Exception e) {
             System.out.println(e.getMessage());

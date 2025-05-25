@@ -47,8 +47,8 @@ public class DishOrderController {
 
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity delete(@RequestParam("id") Long id) {
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity delete(@PathVariable("id") Long id) {
         try {
             dishOrderRepository.delete(id);
             return new ResponseEntity<>(HttpStatus.OK);
