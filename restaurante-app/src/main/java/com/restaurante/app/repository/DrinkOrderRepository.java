@@ -30,8 +30,8 @@ public class DrinkOrderRepository {
         return drinkOrderMapper.toDrinkOrder(pedidoBebida);
     }*/
 
-    public void delete(Long id) {
-        drinkOrderRepository.borrarPedidoBebida(id);
+    public void delete(Long orderId, Long drinkId) {
+        drinkOrderRepository.borrarPedidoBebida(orderId,drinkId);
     }
 
     public DrinkOrder findById(Long id) {

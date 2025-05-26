@@ -50,15 +50,16 @@ public class DrinkOrderController {
 
 
     @DeleteMapping("/delete")
-    public ResponseEntity delete(@RequestParam("id") Long id) {
-
+    public ResponseEntity<?> delete(@RequestParam("orderId") Long orderId, @RequestParam("drinkId") Long drinkId) {
         try {
-            drinkOrderService.delete(id);
-            return new ResponseEntity<>(HttpStatus.OK);
+            drinkOrderService.delete(orderId, drinkId);
+            return ResponseEntity.ok("Registro eliminado correctamente.");
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            e.printStackTrace(); // para ver qué está lanzando la excepción
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error al eliminar: " + e.getMessage());
         }
     }
+
 
     @GetMapping("/id/{id}")
     public ResponseEntity<DrinkOrder> findDrinkOrderById(@PathVariable Long id) {

@@ -6,12 +6,14 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 public interface PedidoBebidaRepository extends JpaRepository<PedidoBebida, PedidoBebidaId> {
-    //@Modifying
-    //@Transactional
-    @Query(value = "CALL borrar_pedido_bebida(:pID_PEDIDO)", nativeQuery = true)
-    void borrarPedidoBebida(@Param("pID_PEDIDO") Long pID_PEDIDO);
+    @Modifying
+    @Transactional
+    @Query(value = "EXEC borrar_pedido_bebida :pID_PEDIDO, :pID_BEBIDA", nativeQuery = true)
+    void borrarPedidoBebida(@Param("pID_PEDIDO") Long idPedido, @Param("pID_BEBIDA") Long idPlato);
+
     @Procedure("PEDIR_BEBIDA")
     void pedirBebida(@Param("pID_PEDIDO") Long idPedido,
                      @Param("pID_BEBIDA") Long idBebida,

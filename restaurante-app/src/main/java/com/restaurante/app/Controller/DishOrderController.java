@@ -47,10 +47,10 @@ public class DishOrderController {
 
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity delete(@PathVariable("id") Long id) {
+    @DeleteMapping("/delete")
+    public ResponseEntity delete(@RequestParam("orderId") Long orderId, @RequestParam("dishId") Long dishId) {
         try {
-            dishOrderRepository.delete(id);
+            dishOrderRepository.delete(orderId, dishId);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
@@ -73,6 +73,7 @@ public class DishOrderController {
             List<DishOrderView> dishOrderView= dishOrderRepository.viewDishOrders();
             return new ResponseEntity<>(dishOrderView, HttpStatus.OK);
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
