@@ -24,7 +24,8 @@ public interface PedidoPlatoRepository extends JpaRepository<PedidoPlato, Pedido
                     @Param("pCANTIDAD") Long cantidad);
 
 
-    @Query(value = "SELECT cantidad_plato(:idPedido) AS total_platos FROM dual", nativeQuery = true)
-    Long cantidadPlato(@Param("idPedido") Long idPedido);
+    @Query(value = "SELECT dbo.cantidad_plato(:p_id_pedido, :p_id_plato)", nativeQuery = true)
+    Long cantidadPlato(@Param("p_id_pedido") Long idPedido, @Param("p_id_plato") Long idPlato);
+
 
 }

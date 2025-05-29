@@ -80,9 +80,9 @@ public class DishOrderController {
 
 
     @PostMapping("/quantity")
-    public ResponseEntity<Long> getCantidadPlato(@RequestParam("id") long id) {
+    public ResponseEntity<Long> getCantidadPlato(@RequestParam("p_id_pedido") long orderId, @RequestParam("p_id_plato") long dishId ) {
         try {
-            Long cantidadPlato = dishOrderRepository.dishQuantity(id);
+            Long cantidadPlato = dishOrderRepository.dishQuantity(orderId, dishId);
             return new ResponseEntity<>(cantidadPlato, HttpStatus.OK);
         } catch (Exception e) {
             System.out.println(e.getMessage());

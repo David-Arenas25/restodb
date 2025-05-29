@@ -40,7 +40,7 @@ public class OrderRepository {
 
     public void total(Long id){orderRepository.total(id);}
 
-    public void updateTotal(Long id){orderRepository.actualizar(id);}
+    public Float updateTotal(Long id){return orderRepository.actualizar(id);}
 
 
 

@@ -65,8 +65,8 @@ public class DishOrderService {
     }
 
 
-    public long dishQuantity(long orderId){
-        return pedidoPlatoRepository.cantidadPlato(orderId);
+    public long dishQuantity(long orderId, long dishId){
+        return pedidoPlatoRepository.cantidadPlato(orderId,dishId);
     }
 
 

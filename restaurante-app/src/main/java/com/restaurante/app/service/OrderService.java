@@ -60,13 +60,12 @@ public class OrderService {
         }catch (Exception e){
             System.err.println("Error"+id+e.getMessage());
         }
-    }
-
-    public void updateTotal(Long id){
+    }    public Float updateTotal(Long id){
         try {
-            orderRepository.updateTotal(id);
+            return orderRepository.updateTotal(id);
         }catch (Exception e){
             System.err.println("Error"+id+e.getMessage());
+            throw new RuntimeException("Error al actualizar el total del pedido: " + id, e);
         }
     }
 

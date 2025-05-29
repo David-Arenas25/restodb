@@ -71,12 +71,10 @@ public class OrderController {
             System.err.println("Error"+id+e.getMessage());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-    }
-
-    @GetMapping("/update")
-    public ResponseEntity updateTotal(@RequestParam("id") Long id){
+    }    @GetMapping("/update")
+    public ResponseEntity<?> updateTotal(@RequestParam("id") Long id){
         try {
-            pedidoRepository.actualizar(id);
+            this.pedidoRepository.actualizar(id);
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (Exception e){
             System.err.println("Error"+id+e.getMessage());
