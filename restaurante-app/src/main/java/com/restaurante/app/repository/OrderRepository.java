@@ -38,7 +38,9 @@ public class OrderRepository {
     }
 
 
-    public void total(Long id){orderRepository.total(id);}
+    public Float total(Long id){
+        return orderRepository.calculateTotal(id);
+    }
 
     public void updateTotal(Long id){orderRepository.actualizar(id);}
 

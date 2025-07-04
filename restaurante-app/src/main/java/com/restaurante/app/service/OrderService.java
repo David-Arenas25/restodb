@@ -52,13 +52,12 @@ public class OrderService {
             throw new RuntimeException("Error al buscar la orden con ID: " + id, e);
         }
     }
-
-
-    public void total(Long id){
+    public Float total(Long id){
         try {
-            orderRepository.total(id);
+            return orderRepository.total(id);
         }catch (Exception e){
-            System.err.println("Error"+id+e.getMessage());
+            System.err.println("Error " + id + " " + e.getMessage());
+            throw new RuntimeException("Error al calcular el total del pedido: " + id, e);
         }
     }
 
