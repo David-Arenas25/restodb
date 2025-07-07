@@ -1,6 +1,11 @@
 package com.restaurante.app.dto;
-import java.time.LocalDateTime;
+import com.restaurante.app.entity.Mesa;
+import lombok.Data;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Data
 public class Order {
 
     private long orderId;
@@ -8,21 +13,14 @@ public class Order {
     private String status;
     private String total;
     private long waiterId;
+    private int tableId;
 
-    public long getWaiterId() {
-        return waiterId;
+    public int getTableId() {
+        return tableId;
     }
 
-    public void setWaiterId(long waiterId) {
-        this.waiterId = waiterId;
-    }
-
-    public String getTotal() {
-        return total;
-    }
-
-    public void setTotal(String total) {
-        this.total = total;
+    public void setTableId(int tableId) {
+        this.tableId = tableId;
     }
 
     public long getOrderId() {
@@ -48,4 +46,21 @@ public class Order {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
+    }
+
+    public long getWaiterId() {
+        return waiterId;
+    }
+
+    public void setWaiterId(long waiterId) {
+        this.waiterId = waiterId;
+    }
+
 }

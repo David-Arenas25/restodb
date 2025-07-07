@@ -20,4 +20,8 @@ public class TableController {
     public List<Table> getAll(){
         return tableService.getAll();
     }
+    public void cambiarEstadoMesa(int idMesa, String estado) {
+    mesaRepository.estadoMesa(idMesa, estado);
+    }
+
 }

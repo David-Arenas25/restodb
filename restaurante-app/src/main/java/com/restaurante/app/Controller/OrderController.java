@@ -60,24 +60,23 @@ public class OrderController {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-    }
-
-    @GetMapping("/total")
-    public ResponseEntity<Order> total(@RequestParam("id") Long id){
+    }    @GetMapping("/total")
+    public ResponseEntity<Float> total(@RequestParam("id") Long id){
         try {
-            pedidoRepository.total(id);
-            return new ResponseEntity<>(HttpStatus.OK);
+            Float total = pedidoRepository.calculateTotal(id);
+            return new ResponseEntity<>(total, HttpStatus.OK);
         }catch (Exception e){
-            System.err.println("Error"+id+e.getMessage());
+            System.err.println("Error " + id + " " + e.getMessage());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-    }    @GetMapping("/update")
-    public ResponseEntity<?> updateTotal(@RequestParam("id") Long id){
+    }@GetMapping("/update")
+    public ResponseEntity<Float> updateTotal(@RequestParam("id") Long id) {
         try {
-            this.pedidoRepository.actualizar(id);
-            return new ResponseEntity<>(HttpStatus.OK);
-        }catch (Exception e){
-            System.err.println("Error"+id+e.getMessage());
+            Float total = pedidoRepository.actualizar(id);
+            System.out.println("total actualizado" + total);
+            return new ResponseEntity<>(total, HttpStatus.OK);
+        } catch (Exception e) {
+            System.err.println("Error" + id + e.getMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
