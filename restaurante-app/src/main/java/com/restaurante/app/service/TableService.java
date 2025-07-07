@@ -21,5 +21,13 @@ public class TableService {
     public List<Table> getAll() {
         return tableMapper.toTables(mesaRepository.findAll());
     }
+    public void cambiarEstadoMesa(int idMesa, String estado) {
+    mesaRepository.estadoMesa(idMesa, estado);
+}
+
+
+
+ 
+
 
 }

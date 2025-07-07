@@ -3,11 +3,10 @@ package com.restaurante.app.Controller;
 import com.restaurante.app.dto.Table;
 import com.restaurante.app.service.TableService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("tables")
@@ -20,8 +19,14 @@ public class TableController {
     public List<Table> getAll(){
         return tableService.getAll();
     }
-    public void cambiarEstadoMesa(int idMesa, String estado) {
-    mesaRepository.estadoMesa(idMesa, estado);
-    }
+
+@PutMapping("/estado")
+public void cambiarEstadoMesa(@RequestBody Map<String, Object> body) {
+    int idMesa = (int) body.get("idMesa");
+    String estado = (String) body.get("estado");
+    tableService.cambiarEstadoMesa(idMesa, estado);
+}
+    
+
 
 }
