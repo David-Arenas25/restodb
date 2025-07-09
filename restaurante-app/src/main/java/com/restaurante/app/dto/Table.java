@@ -1,40 +1,33 @@
 package com.restaurante.app.dto;
 
-import com.restaurante.app.entity.Pedido;
-import lombok.Data;
-
-import java.util.List;
-
-@Data
 public class Table {
-    private Integer tableId;
-    private String tableNumber;
+    private Long tableId;
+    private int tableNumber;
+    private int capacity;
     private String tableStatus;
-    private Integer capacity;
-    private List<Order> orders;
 
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }
-
-    public Integer getTableId() {
+    public Long getTableId() {
         return tableId;
     }
 
-    public void setTableId(Integer tableId) {
+    public void setTableId(Long tableId) {
         this.tableId = tableId;
     }
 
-    public String getTableNumber() {
+    public int getTableNumber() {
         return tableNumber;
     }
 
-    public void setTableNumber(String tableNumber) {
+    public void setTableNumber(int tableNumber) {
         this.tableNumber = tableNumber;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 
     public String getTableStatus() {
@@ -43,13 +36,5 @@ public class Table {
 
     public void setTableStatus(String tableStatus) {
         this.tableStatus = tableStatus;
-    }
-
-    public Integer getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(Integer capacity) {
-        this.capacity = capacity;
     }
 }

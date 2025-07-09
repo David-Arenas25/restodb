@@ -50,15 +50,15 @@ public class DrinkOrderController {
 
 
     @DeleteMapping("/delete")
-    public ResponseEntity delete(@RequestParam("id") Long id) {
-
+    public ResponseEntity<Void> delete(@RequestParam("orderId") Long orderId, @RequestParam("drinkId") Long drinkId) {
         try {
-            drinkOrderService.delete(id);
-            return new ResponseEntity<>(HttpStatus.OK);
+            drinkOrderService.delete(orderId, drinkId);
+            return ResponseEntity.ok().build();
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+           return ResponseEntity.badRequest().build();
         }
     }
+
 
     @GetMapping("/id/{id}")
     public ResponseEntity<DrinkOrder> findDrinkOrderById(@PathVariable Long id) {
@@ -82,9 +82,9 @@ public class DrinkOrderController {
 
 
     @PostMapping("/quantity")
-    public ResponseEntity<Long> getCantidadBebida(@RequestParam("id") long id) {
+    public ResponseEntity<Long> getCantidadBebida(@RequestParam("p_id_pedido") long idPedido, @RequestParam("p_id_bebida") long idBebida) {
         try {
-            Long cantidadBebida = drinkOrderService.drinkQuantity(id);
+            Long cantidadBebida = drinkOrderService.drinkQuantity(idPedido,idBebida);
             return new ResponseEntity<>(cantidadBebida, HttpStatus.OK);
         } catch (Exception e) {
             System.out.println(e.getMessage());

@@ -48,9 +48,9 @@ public class DishOrderController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity delete(@RequestParam("id") Long id) {
+    public ResponseEntity delete(@RequestParam("orderId") Long orderId, @RequestParam("dishId") Long dishId) {
         try {
-            dishOrderRepository.delete(id);
+            dishOrderRepository.delete(orderId, dishId);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
@@ -73,15 +73,16 @@ public class DishOrderController {
             List<DishOrderView> dishOrderView= dishOrderRepository.viewDishOrders();
             return new ResponseEntity<>(dishOrderView, HttpStatus.OK);
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
 
     @PostMapping("/quantity")
-    public ResponseEntity<Long> getCantidadPlato(@RequestParam("id") long id) {
+    public ResponseEntity<Long> getCantidadPlato(@RequestParam("p_id_pedido") long orderId, @RequestParam("p_id_plato") long dishId ) {
         try {
-            Long cantidadPlato = dishOrderRepository.dishQuantity(id);
+            Long cantidadPlato = dishOrderRepository.dishQuantity(orderId, dishId);
             return new ResponseEntity<>(cantidadPlato, HttpStatus.OK);
         } catch (Exception e) {
             System.out.println(e.getMessage());

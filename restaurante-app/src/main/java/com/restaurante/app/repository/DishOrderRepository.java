@@ -30,8 +30,8 @@ public class DishOrderRepository {
         return dishOrderMapper.toDishOrder(savedPedidoPlato);
     }*/
 
-    public void delete(Long id) {
-        dishOrderRepository.borrarPedidoBebida(id);
+    public void delete(Long orderId, Long dishId) {
+        dishOrderRepository.borrarPedidoPlato(orderId, dishId);
     }
 
     public DishOrder findById(Long id) {

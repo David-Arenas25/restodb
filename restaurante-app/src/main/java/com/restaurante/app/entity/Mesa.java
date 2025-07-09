@@ -1,49 +1,48 @@
 package com.restaurante.app.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Data;
-
 import javax.persistence.*;
-import java.util.List;
+import java.io.Serializable;
 
 @Entity
-@Data
 @Table(name = "MESAS")
-public class Mesa {
-
+public class Mesa implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_MESA")
-    private Integer idMesa;
+    private Long idMesa;
 
     @Column(name = "NUMERO_MESA")
-    private String numeroMesa;
+    private int numeroMesa;
+
+    @Column(name = "CAPACIDAD")
+    private int capacidad;
 
     @Column(name = "ESTADO_MESA")
     private String estadoMesa;
 
-    @Column(name = "CAPACIDAD")
-    private Integer capacidad;
 
-    @OneToMany(mappedBy = "mesas")
-    @JsonIgnoreProperties("mesas")
-    private List<Pedido> pedidos;
-
-    public Integer getIdMesa() {
+    public Long getIdMesa() {
         return idMesa;
     }
 
-    public void setIdMesa(Integer idMesa) {
+    public void setIdMesa(Long idMesa) {
         this.idMesa = idMesa;
     }
 
-    public String getNumeroMesa() {
+    public int getNumeroMesa() {
         return numeroMesa;
     }
 
-    public void setNumeroMesa(String numeroMesa) {
+    public void setNumeroMesa(int numeroMesa) {
         this.numeroMesa = numeroMesa;
+    }
+
+    public int getCapacidad() {
+        return capacidad;
+    }
+
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
     }
 
     public String getEstadoMesa() {
@@ -53,20 +52,7 @@ public class Mesa {
     public void setEstadoMesa(String estadoMesa) {
         this.estadoMesa = estadoMesa;
     }
-
-    public Integer getCapacidad() {
-        return capacidad;
-    }
-
-    public void setCapacidad(Integer capacidad) {
-        this.capacidad = capacidad;
-    }
-
-    public List<Pedido> getPedidos() {
-        return pedidos;
-    }
-
-    public void setPedidos(List<Pedido> pedidos) {
-        this.pedidos = pedidos;
-    }
 }
+
+
+

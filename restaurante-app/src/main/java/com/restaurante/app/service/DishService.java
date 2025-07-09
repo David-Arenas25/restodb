@@ -1,6 +1,7 @@
 package com.restaurante.app.service;
 
 import com.restaurante.app.dto.Dish;
+import com.restaurante.app.dto.Waiter;
 import com.restaurante.app.mapper.DishMapper;
 import com.restaurante.app.repository.DishRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,4 +59,5 @@ public class DishService {
             throw new RuntimeException("Error al buscar el plato por nombre: " + name, e);
         }
     }
+
 }

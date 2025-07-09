@@ -39,11 +39,11 @@ public class DishOrderService {
 
     }
 
-    public void delete(Long id) {
+    public void delete(Long orderId, Long dishId) {
         try {
-            dishOrderRepository.delete(id);
+            dishOrderRepository.delete(orderId, dishId);
         } catch (Exception e) {
-            throw new RuntimeException("Error al eliminar la orden de plato con ID: " + id, e);
+            throw new RuntimeException("Error al eliminar la orden de plato con ID: " + orderId, e);
         }
     }
 
@@ -65,8 +65,8 @@ public class DishOrderService {
     }
 
 
-    public long dishQuantity(long orderId){
-        return pedidoPlatoRepository.cantidadPlato(orderId);
+    public long dishQuantity(long orderId, long dishId){
+        return pedidoPlatoRepository.cantidadPlato(orderId,dishId);
     }
 
 

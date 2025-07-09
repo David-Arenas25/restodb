@@ -69,17 +69,6 @@ public class OrderController {
             System.err.println("Error " + id + " " + e.getMessage());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-<<<<<<< Updated upstream
-    }
-
-    @GetMapping("/update")
-    public ResponseEntity updateTotal(@RequestParam("id") Long id){
-        try {
-            pedidoRepository.actualizar(id);
-            return new ResponseEntity<>(HttpStatus.OK);
-        }catch (Exception e){
-            System.err.println("Error"+id+e.getMessage());
-=======
     }@GetMapping("/update")
     public ResponseEntity<Float> updateTotal(@RequestParam("id") Long id) {
         try {
@@ -88,7 +77,6 @@ public class OrderController {
             return new ResponseEntity<>(total, HttpStatus.OK);
         } catch (Exception e) {
             System.err.println("Error" + id + e.getMessage());
->>>>>>> Stashed changes
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

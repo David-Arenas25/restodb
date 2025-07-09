@@ -42,7 +42,6 @@ public class Pedido {
 
     @ManyToOne
     @JoinColumn(name = "ID_MESA", insertable = false, updatable = false)
-    @JsonIgnoreProperties("pedidos")
     private Mesa mesas;
 
     public Long getIdPedido() {

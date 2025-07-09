@@ -43,11 +43,11 @@ public class DrinkOrderService {
 
     }
 
-    public void delete(Long id) {
+    public void delete(Long orderId, Long drinkId) {
         try {
-            drinkOrderRepository.delete(id);
+            drinkOrderRepository.delete(orderId, drinkId);
         } catch (Exception e) {
-            throw new RuntimeException("Error al eliminar la orden de bebida con ID: " + id, e);
+            throw new RuntimeException("Error al eliminar la orden de bebida con ID: " + orderId, e);
         }
     }
 
@@ -74,8 +74,8 @@ public class DrinkOrderService {
 
 
 
-    public long drinkQuantity(long orderId){
-        return pedidoBebidaRepository.cantidadBebida(orderId);
+    public long drinkQuantity(long orderId , long drinkId){
+        return pedidoBebidaRepository.cantidadBebida(orderId,drinkId);
     }
 
 

@@ -1,20 +1,35 @@
 package com.restaurante.app.dto;
-import javax.persistence.*;
 
+import com.restaurante.app.config.DishOrderViewId;
+import lombok.*;
+
+import javax.persistence.*;
+import javax.persistence.Table;
+import java.io.Serializable;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
+@IdClass(DishOrderViewId.class)
+@Table(name = "pedido_platos",
+        uniqueConstraints = @UniqueConstraint(
+                columnNames = {"id_pedido", "id_plato"}
+        ))
 public class DishOrderView {
 
     @Id
-    @Column(name ="id_Pedido")
+    @Column(name = "id_pedido")
     private Long orderId;
-    @Column(name ="nombre_plato")
+    @Id
+    @Column(name = "id_plato")
+    private Long dishId;
+    @Column(name = "nombre_plato")
     private String dishName;
-    @Column(name ="cantidad")
+    @Column(name = "cantidad")
     private Integer quantity;
-    @Column(name ="nombre_mesero")
+    @Column(name = "nombre_mesero")
     private String waiterName;
-    @Column(name ="nombre_mesero")
-
 
     public Long getOrderId() {
         return orderId;
@@ -22,6 +37,14 @@ public class DishOrderView {
 
     public void setOrderId(Long orderId) {
         this.orderId = orderId;
+    }
+
+    public Long getDishId() {
+        return dishId;
+    }
+
+    public void setDishId(Long dishId) {
+        this.dishId = dishId;
     }
 
     public String getDishName() {
