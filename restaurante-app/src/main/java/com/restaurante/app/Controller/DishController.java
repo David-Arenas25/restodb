@@ -2,8 +2,10 @@ package com.restaurante.app.Controller;
 
 
 import com.restaurante.app.dto.Dish;
+import com.restaurante.app.dto.Waiter;
 import com.restaurante.app.mapper.DishMapper;
 import com.restaurante.app.repository.DishRepository;
+import com.restaurante.app.service.DishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,9 @@ public class DishController {
 
     @Autowired
     private DishMapper dishMapper;
+
+    @Autowired
+    private DishService dishService;
 
     @GetMapping("/all")
     public ResponseEntity<List<Dish>> getAll() {
@@ -68,4 +73,6 @@ public class DishController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
 }
+

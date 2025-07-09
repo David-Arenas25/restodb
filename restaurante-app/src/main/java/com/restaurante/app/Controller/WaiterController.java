@@ -3,6 +3,7 @@ package com.restaurante.app.Controller;
 import com.restaurante.app.dto.Waiter;
 import com.restaurante.app.mapper.WaiterMapper;
 import com.restaurante.app.repository.WaiterRepository;
+import com.restaurante.app.service.WaiterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,9 @@ public class WaiterController {
 
     @Autowired
     private WaiterMapper waiterMapper;
+
+    @Autowired
+    private WaiterService waiterService;
 
     @GetMapping("/all")
     public ResponseEntity<List<Waiter>> getAllWaiters() {
@@ -68,4 +72,8 @@ public class WaiterController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-}
+
+
+    }
+
+

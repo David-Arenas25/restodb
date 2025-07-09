@@ -50,13 +50,12 @@ public class DrinkOrderController {
 
 
     @DeleteMapping("/delete")
-    public ResponseEntity<?> delete(@RequestParam("orderId") Long orderId, @RequestParam("drinkId") Long drinkId) {
+    public ResponseEntity<Void> delete(@RequestParam("orderId") Long orderId, @RequestParam("drinkId") Long drinkId) {
         try {
             drinkOrderService.delete(orderId, drinkId);
-            return ResponseEntity.ok("Registro eliminado correctamente.");
+            return ResponseEntity.ok().build();
         } catch (Exception e) {
-            e.printStackTrace(); // para ver qué está lanzando la excepción
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error al eliminar: " + e.getMessage());
+           return ResponseEntity.badRequest().build();
         }
     }
 

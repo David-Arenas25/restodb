@@ -15,7 +15,8 @@ public interface TableMapper {
             @Mapping(source = "idMesa", target = "tableId"),
             @Mapping(source = "numeroMesa", target = "tableNumber"),
             @Mapping(source = "capacidad", target = "capacity"),
-            @Mapping(source = "estadoMesa", target = "tableStatus")
+            @Mapping(source = "estadoMesa", target = "tableStatus"),
+
     })
     Table toTable(Mesa mesa);
 

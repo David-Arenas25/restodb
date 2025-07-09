@@ -14,6 +14,15 @@ public class Order {
     private String total;
     private long waiterId;
     private int tableId;
+    private Mesa tables;
+
+    public Mesa getTables() {
+        return tables;
+    }
+
+    public void setTables(Mesa tables) {
+        this.tables = tables;
+    }
 
     public int getTableId() {
         return tableId;
